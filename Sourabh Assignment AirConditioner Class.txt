@@ -1,0 +1,163 @@
+public class AssignmentDay2 {
+
+	public static void main(String[] args) {
+
+		IotInverterAC pac = new IotInverterAC();
+		pac.setNameOfCompany("Voltas");
+		System.out.println(pac.getNameOfCompany());
+		pac.inverterFunction(60000.00);
+		
+		
+		InverterAC iac=new InverterAC();
+		iac.modelOfAC="alskdjflk";
+		
+		pac.iotInverterAC(iac);
+		pac.iotFeature();
+
+//		AirConditioner ac1 = new AirConditioner();
+//		AirConditioner ac2 = new AirConditioner();
+//		ac1.setDetailsofAirConditioner(34000, "Whirlpool",24,"three");
+//		ac2.setDetailsofAirConditioner(65000, "LG",19,"five");
+//		ac1.printDetailsofAirConditioner();
+//		ac2.printDetailsofAirConditioner();
+//		
+//		
+//		ac1.setACUsage(6);
+//		ac1.getPricePerUnit();
+//		System.out.println("AC was used for : "+ac1.getACUsage()+" hours");
+//		System.out.println("Electricity bill for AC used : "+ac1.calculateElectricity());
+//		
+//		ac2.setACUsage(12);
+//		ac2.getPricePerUnit();
+//		System.out.println("AC was used for : "+ac2.getACUsage()+" hours");
+//		System.out.println("Electricity bill for AC used : "+ac2.calculateElectricity());
+//		
+	}
+
+}
+
+class AirConditioner {
+
+	float priceOfAirConditioner;
+	private String nameOfCompany;
+	private int temp;
+	String typeOfStar;
+
+	public String getNameOfCompany() {
+		return nameOfCompany;
+	}
+
+	public void setNameOfCompany(String nameOfCompany) {
+		this.nameOfCompany = nameOfCompany;
+	}
+
+	float hours;
+	double pricePerUnit;
+	int noOfUnits;
+
+	public AirConditioner() {
+		System.out.println("This is GrandParent class default constructor");
+
+		nameOfCompany = "Voltas";
+	}
+
+	public AirConditioner(float p, String n, int t, String s) {
+		priceOfAirConditioner = p;
+		nameOfCompany = n;
+		temp = t;
+		typeOfStar = s;
+	}
+
+	void setDetailsofAirConditioner(float p, String n, int t, String s) {
+		priceOfAirConditioner = p;
+		nameOfCompany = n;
+		temp = t;
+		typeOfStar = s;
+	}
+
+	public int getTemp() {
+		return temp;
+	}
+
+	public void setTemp(int temp) {
+		this.temp = temp;
+	}
+
+	void printDetailsofAirConditioner() {
+		System.out.println("price of the AirContioner       :" + priceOfAirConditioner);
+		System.out.println("nameOfCompany                   :" + nameOfCompany);
+		System.out.println("temp                            :" + temp);
+		System.out.println("typeOfStar                      :" + typeOfStar);
+
+	}
+
+	public double calculateElectricity() {
+
+		return getUnitsPerHour() * hours * pricePerUnit;
+	}
+
+	public void setACUsage(float hours) {
+		this.hours = hours;
+	}
+
+	public void getPricePerUnit() {
+		pricePerUnit = 10;
+
+	}
+
+	public float getACUsage() {
+		return hours;
+	}
+
+	public float getUnitsPerHour() {
+
+		if (temp > 25) {
+			noOfUnits = 5;
+		} else if (temp > 20 && temp < 25) {
+			noOfUnits = 10;
+		} else {
+			noOfUnits = 15;
+		}
+		return noOfUnits;
+	}
+
+}
+
+class InverterAC extends AirConditioner {
+
+	String modelOfAC;
+
+	InverterAC() {
+		System.out.println("This is Parent class constructor");
+		modelOfAC = "VH2342";
+	}
+
+	void inverterFunction(double price) {
+
+		System.out
+				.println("This is Inverter AC which consumes lesser electricity" + " whose price starts from " + price);
+	}
+
+}
+
+class IotInverterAC extends InverterAC {
+
+	IotInverterAC() {
+		System.out.println("This is grandchild class constructor");
+
+	}
+	
+	
+
+	void iotInverterAC(InverterAC iac) {
+		
+		
+		System.out.println("This is Iot Inverter AC. We are using business function "+iac.modelOfAC);
+
+		System.out.println(getNameOfCompany() + " " + modelOfAC);
+	}
+
+	void iotFeature() {
+		System.out.println("This inverterAc is connected to internet accessible from anywhere & anytime");
+	}
+}
