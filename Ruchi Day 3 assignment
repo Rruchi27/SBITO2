@@ -1,0 +1,121 @@
+import java.time.LocalDate;
+
+public class NewClass {
+
+	public static void main(String[] args) {
+		TradingProfile t1 = new TradingProfile(123456,5000,"SBI","abcde5f",23,987456);
+		
+		t1.Profiledetails();
+		System.out.println("Congratulations! You can start trading in stock market");
+		/*float dbal= t1.(425);
+		System.out.println("order placed successfully. Your trading account credited with :" +dbal);
+		*/
+		
+		Addshare as = new Addshare();
+		as.add();
+		as.buy();
+		
+		Sellshare ss = new Sellshare();
+		ss.sell();
+		System.out.println("ss " +ss );
+		
+				
+	}
+
+}
+
+class TradingProfile
+{
+	int bankacc;
+	int amt;
+	String comname;
+	String pancard;
+	int age;
+	float dacno;
+	
+	
+	public TradingProfile(int bankacc, int amt, String comname, String pancard, int age, float dacno)
+	{
+		this.bankacc = bankacc;
+		this.amt = amt;
+		this.comname = comname;
+		this.pancard = pancard;
+		this.age = age;
+		this.dacno = dacno;
+		
+	}
+	
+	/* void TradingProfile(int ba,int am,String n,String pc,int a, float d)
+	{
+		bankacc = ba;
+		amt = am;
+		comname = n;
+		pancard = pc;
+		age = a;
+		dacno = d;
+	} */
+	
+	void Profiledetails ()
+	{
+		System.out.println("Please enter Bank Account details to create trading profile " +bankacc);
+		System.out.println("Please enter amount buy shares " +amt);
+		System.out.println("Select name of company of which you want to buy shares " +comname);
+		System.out.println("Please enter your pancard details " +pancard);
+		System.out.println("Enter your age to activate trading account " +age);
+	}
+	
+	
+	
+	TradingProfile()
+	{
+	}
+}
+	class Addshare extends TradingProfile
+	{
+		int count = 100;
+		int addindacc = 0;
+		int scount;
+		
+		void add()
+		{
+			System.out.println("no of shares to buy " +count);
+			
+			System.out.println("no of shares to be added in demat account " +addindacc);
+		}
+		
+		void buy()
+		{
+			this.count = count;
+			this.addindacc = addindacc;
+			this.scount = scount;
+			scount = addindacc + count;
+			System.out.println("congratulations order places successfully. shares added in demat account "+addindacc);
+			
+		}
+	}
+		
+		class Sellshare extends Addshare
+		{
+			int dbfmdacc = 50;
+			
+			void sell()
+			{
+				this.count=count;
+				this.dbfmdacc = dbfmdacc;
+				this.scount =scount;
+				
+				scount = scount - dbfmdacc;
+				
+				System.out.println("no of shares sold " +scount);
+			}
+
+			@Override
+			public String toString() {
+				return "Sellshare [dbfmdacc=" + dbfmdacc + ", count=" + count + ", addindacc=" + addindacc + ", scount="
+						+ scount + ", bankacc=" + bankacc + ", amt=" + amt + ", comname=" + comname + ", pancard="
+						+ pancard + ", age=" + age + ", dacno=" + dacno + "]";
+			}
+			
+			
+		}
+	
