@@ -1,0 +1,83 @@
+public clas Association
+{
+	public static void main(String agrs[])
+	{
+		Airconditioner ac= new Airconditioner();
+		ac.room();
+
+		
+		
+	}
+}
+
+class Company 
+{
+
+
+}
+
+class ManufComp extends Company
+{
+
+}
+
+class Product 
+{
+
+}
+class Airconditioner extends Product
+{
+	String type;
+	int cost;
+	Product pid = new Product();
+	
+	void room(Hotel h)
+	{
+		System.out.println("hotel uses Airconditioner for cooling");
+	}
+
+	void hall(Restaurant r)
+	{
+		System.out.println("Restaurant uses Airconditioner for cooling");
+	}
+
+	Reportcard Reports()
+	{
+		Reportcard rc= new Reportcard();
+		return rc;
+	}  
+}
+
+class Hotel
+{
+
+}
+
+class Restaurant 
+{
+
+}
+
+class Reportcard
+{
+
+	Generate Report()
+	{
+		Classroom cr = new Classroom();
+		return cr;
+	}
+}
+
+class Classroom 
+{
+	Book read()
+	{
+		Book b = new Book()
+		return b;
+	}
+}
+	
+
+
+
+
