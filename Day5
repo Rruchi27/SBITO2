@@ -1,0 +1,118 @@
+
+public class Government {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+interface Central
+{
+	void CentralPolicy();
+}
+
+interface State
+{
+	void StatePolicy();
+}
+
+interface Statespecific
+{
+	void SpecialPolicy();
+}
+
+interface Global
+{
+	void GlobalPolicy();
+}
+
+interface UnionTeritory
+{
+	void UTPolicy();
+}
+
+class CapitalCity implements Central,State
+{
+	String Name;
+	int area;
+	long Population;
+	
+	public CapitalCity(String name, int area, long population) {
+		super();
+		Name = name;
+		this.area = area;
+		Population = population;
+	}
+
+	@Override
+	public String toString() {
+		return "CapitalCity [Name=" + Name + ", area=" + area + ", Population=" + Population + "]";
+	}
+
+	@Override
+	public void StatePolicy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CentralPolicy() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}
+
+class City extends CapitalCity implements Statespecific, UnionTeritory
+{
+	int pincode;
+
+	public City(String name, int area, long population, int pincode) {
+		super(name, area, population);
+		this.pincode = pincode;
+	}
+	
+	void ShowCityDetails()
+	{
+		System.out.println(Name + "is most populated city with population of" +Population+ " in the area of " +area+ " kms");
+	}
+
+	@Override
+	public void UTPolicy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void SpecialPolicy() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
+class village
+{
+	static void ImplementPolicy(City c)
+	{
+		c.CentralPolicy();
+		c.StatePolicy();
+		c.SpecialPolicy();
+		c.UTPolicy();
+		c.GlobalPolicy();
+	}
+}
+
+class District
+{
+	static void ImplementPolicy(CapitalCity c)
+	{
+		c.CentralPolicy();
+		c.StatePolicy();
+		c.SpecialPolicy();
+		c.UTPolicy();
+		c.GlobalPolicy();
+	}
+}
