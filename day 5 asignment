@@ -1,0 +1,66 @@
+
+
+package myproj;
+
+public class Assignment {
+      public static void main(String args[])
+      {
+
+      }
+
+}
+
+abstract class Product
+{
+   abstract void Ptype();
+   abstract void Pid();
+}
+class Airconditioner extends Product
+{
+    int cost;
+
+    public Airconditioner(int cost)
+    {
+        super();
+        this.cost=cost;
+    }
+
+    void Ptype()
+    {
+        System.out.println("Product type is Split AC");
+    }
+
+    void Pid()
+    {   
+        int ProdID;
+        System.out.println("Product id is" +ProdID);
+    }
+
+}
+abstract class FoodRestaurants 
+{
+    abstract FR(String FRname);
+    abstract 
+
+}
+interface ReportCard
+{
+    void RcScore (int Rc);
+} 
+
+interface Company
+{
+    void ComName(String Name);
+}
+
+interface Branch
+{
+    void Branch(String Area);
+}
+
+class KFC implements ReportCard,Branch,
+{
+    
+}
+
+
