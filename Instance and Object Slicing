@@ -1,0 +1,98 @@
+
+public class ObjectSlicing 
+{
+
+	public ObjectSlicing() 
+	{
+		
+	}
+
+	public static void main(String[] args) 
+	{
+		KFC rs = new KFC(null);
+		rs.Branch("Bandra");
+		ElcProduct ep;
+		AirC ac = new AirC(45000);
+		ep = ac;
+		ep.Ptype();
+		ep.Pid();
+	}
+
+}
+
+abstract class ElcProduct
+{
+ abstract void Ptype();
+ abstract void Pid();
+}
+class AirC extends ElcProduct
+{
+  int cost;
+
+  public AirC(int cost)
+  {
+      super();
+      this.cost=cost;
+  }
+
+  void Ptype()
+  {
+      System.out.println("Product type is Split AC");
+  }
+
+  void Pid()
+  {   
+      int ProdID;
+      System.out.println("Product id is" +ProdID);
+  }
+
+}
+abstract class FoodRestaurants 
+{
+  abstract void FR(String FRname);
+  abstract void place (String area);
+
+}
+interface ReportCard
+{
+  void RcScore (int Rc);
+} 
+
+interface CoName
+{
+  void ComName(String Name);
+}
+
+interface Branch
+{
+  void Branch(String Barea);
+}
+
+class KFC implements ReportCard,Branch
+{
+	String Menu;
+	
+	public KFC(String Menu)
+	{
+		super();
+		this.Menu = Menu;
+	}
+	
+	public void Branch(String Barea)
+	{
+		
+	System.out.println("KFC new Branch is open in the " +Barea);
+		
+	}
+
+
+	public void RcScore(int Rc) 
+	{
+		System.out.println("Monthly Score card of restaurant for this month is" +Rc);
+	}
+
+	
+}
+
+
+© 2022 GitHub, Inc.
