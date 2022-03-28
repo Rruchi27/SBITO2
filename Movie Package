@@ -1,0 +1,14 @@
+package Movie;
+
+public class Hollywood {
+
+	public Hollywood() {
+		System.out.println("new movie launched in this week");
+	}
+	
+	void Watch()
+	{
+		System.out.println("trisha wants to watch new movie which is releases this week");
+	}
+
+}
