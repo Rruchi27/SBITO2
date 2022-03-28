@@ -1,0 +1,124 @@
+publi class Exceptionthread
+{
+	public static void main(String args[])
+	{
+		System.out.println("Access card details");
+
+		AccessCard ac;
+		try
+		{
+			ac = new AccessCard(456321,"Ruchi");
+			System.out.println("Access card details of employee is " +ac);
+		}
+		catch(IdNotFoundException e)
+		{
+			System.out.println("Access card details of employee is " +ac);
+		}
+		catch(DataMismatchException e)
+		{
+			System.out.println("Access card details of employee is " +ac);
+		}
+		catch(InactiveCardExcetion e)
+		{
+			System.out.println("Access card details of employee is " +ac);
+		}
+
+
+
+
+	}
+}
+
+
+class IdNotFoundException extends Exception
+{
+	IdNotFound(String str)
+	{
+		super(str);
+	}
+}
+
+class DataMismatchException extends Exception
+{
+	DataMismatchException(String str)
+	{
+		super(str);
+	}
+}
+
+class InactiveCardExcetion extends Exception
+{
+	InactiveCardException(String str)
+	{
+		super(str);
+	}
+}
+
+abstrac class Idcard
+{
+
+	int pfid;
+	String name;
+	abstract void Active();
+	
+}
+
+class AccessCard extends Idcard
+{	
+	int Accessdate;
+	public AccessCard(int pfid,String name) throws IdNotFoundException,DataMismatchException,InactiveCardExcetion
+	{
+		super();
+		this.pfid= pfid;
+		this.name=name;
+			
+	void Active()
+	{
+		System.out.Println("your card is active.");
+	}
+
+	if(pfid<0)
+	{
+		throw new IdNotFoundException("PF ID details not found in card.Please contact your admin");
+	}
+	else if (pfid<= && name=null)
+	{
+		throw new DataMismatchException("PF ID and Name not matched in card as per system.Please contact your admin");
+	}
+	else if (Accessdate.localdate <= 01.01.2021)
+	{
+		throw new DataMismatchException("Card not used for more than 6 months please reactivate your card.Please contact your admin");
+	}
+	else
+	{
+		System.out.println("please contact admin for creatig new access card");
+	}
+	}
+	public string tostring()
+	{
+		return "AccessCard [pfid ="+pfid+" , name=" +name +"]";
+	}
+	void NumOfAccessTime()
+	{
+		System.out.Println("Tap card on device to unlock door to enter into premises");
+		for (int i=1;i<=5;i++)
+		{
+			try
+			{
+				thread.sleep(3000)
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+			if (i=5)
+			{
+				ExceedsCount Ec = new ExceedsCount("you have exceeded try limit for the day");
+				throw Ec;
+			}
+			System.out.println ("Please contact admin to unlock your card");
+	}
+}
+
+			
+				
