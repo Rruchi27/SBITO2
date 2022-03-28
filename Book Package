@@ -1,0 +1,12 @@
+package Book;
+
+public class Novel {
+
+	public Novel() {
+		System.out.println("hazel is reading a novel");
+	}
+	void read()
+	{
+		System.out.println("there are n no. of books available for reading");
+	}
+}
