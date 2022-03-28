@@ -1,0 +1,13 @@
+package Laptop;
+
+public class MacBook {
+
+	public MacBook() {
+		System.out.println("latest version of MacBook Pro is recently launched");
+	}
+
+	void BuyLaptop()
+	{
+		System.out.println("diya wants to buy newly launched Macbbok pro");
+	}
+}
