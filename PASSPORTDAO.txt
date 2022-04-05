@@ -1,0 +1,181 @@
+Passport class
+-----------------------------
+package hybernateProject;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="passport_tbl")
+public class Passport {
+
+	@Id
+	@GeneratedValue
+	@Column(name="passport_id")
+	private int passportID;
+	
+	@Column(name="passport_issue", length = 20)
+	private LocalDate IssueDate;
+	
+	@Column(name="passport_Expiry", length = 20)
+	private LocalDate ExpiryDate;
+	
+	@Column(name="passport_issueby")
+	private String issueby;
+
+	public Passport() {
+		super();
+		System.out.println("Pojo is created ");
+	}
+
+	public int getPassportID() {
+		return passportID;
+	}
+
+	public void setPassportID(int passportID) {
+		this.passportID = passportID;
+	}
+
+	public LocalDate getIssueDate() {
+		return IssueDate;
+	}
+
+	public void setIssueDate(LocalDate issueDate) {
+		IssueDate = issueDate;
+	}
+
+	public LocalDate getExpiryDate() {
+		return ExpiryDate;
+	}
+
+	public void setExpiryDate(LocalDate expiryDate) {
+		ExpiryDate = expiryDate;
+	}
+
+	public String getIssueby() {
+		return issueby;
+	}
+
+	public void setIssueby(String issueby) {
+		this.issueby = issueby;
+	}
+	
+	
+}
+*****************************************************
+----------------------------------------------------------
+PASSPORTDAO INTERFACE 
+package hybernateProject;
+
+import java.util.Set;
+
+public interface PassportDAOTest {
+	void 			  insertPassport(Passport passport);
+	void 			  updatePassport(Passport pp);
+	void 			  deletePassport(int pass);
+	Passport findPassport(int passport_ID);
+	Set<Passport> findAllPassport();
+}
+
+
+
+********************************************************
+--------------------------------------------------------
+PASSPORTDAO
+
+package hybernateProject;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class PassportDAO implements PassportDAOTest {
+	
+	EntityManagerFactory emf;
+	EntityManager em;
+	
+	public PassportDAO() 
+	{ 
+		System.out.println("EmployeeDAO Constructor  started.........");	
+					
+		System.out.println("Trying to read persistence file");
+		
+		this.emf= Persistence.createEntityManagerFactory("MyJPA");
+		System.out.println("Entity Manager Factory Create ");
+		
+		this.em = emf.createEntityManager();
+		System.out.println("Entity Manager Create ");
+	}
+
+	public void insertPassport(Passport passport) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+			em.persist(passport);
+		et.commit();
+		
+	}
+
+	public void updatePassport(Passport pp) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+			em.merge(pp);
+		et.commit();
+		
+		
+	}
+
+	public void deletePassport(int pass) {
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+			Passport prt = em.find(Passport.class, pass);
+			em.remove(prt);
+		et.commit();
+		
+	}
+
+	public Passport findPassport(int passport_ID) {
+		return em.find(Passport.class, passport_ID);
+		
+	}
+
+	public Set<Passport> findAllPassport() {
+		Query query = em.createQuery("from Passport");
+		List<Passport> list = query.getResultList();
+		Set<Passport> passSet = new HashSet(list);
+		return passSet;
+		
+	}
+
+}
+******************************************************************
+--------------------------------------------------------------------
+CRUDTESTING
+
+
+@Test
+public void createPassportTest() {
+		
+		Passport p1= new Passport();
+		//p1.setPassportID(123456);
+		p1.setIssueDate(LocalDate.of(2021, 10, 10));
+		p1.setExpiryDate(LocalDate.of(2032, 10, 10));
+		p1.setIssueby("Govt of India");
+		
+		PassportDAO pd= new PassportDAO();
+		pd.insertPassport(p1);
+		
+		System.out.println("created the record");
+	}
+		
+}
