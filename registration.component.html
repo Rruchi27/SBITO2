@@ -1,0 +1,146 @@
+<body>
+
+   <div class="signup-form">
+      <!-- form header -->
+      <div class="form-header">
+         <h1>Create Account</h1>
+      </div>
+      <!-- form body -->
+      <div class="form-body">
+         <!-- Firstname and Lastname -->
+         <div class="horizontal-group">
+            <div class="form-group left">
+               <label for="Salutation" class="label-title">Salutation</label><br>
+               <select name="Salutation" class="form-input" RegisterObj.Salutation>
+                  <option>Select</option>
+                  <option>Mr.</option>
+                  <option>Mrs.</option>
+                  <option>Miss.</option>
+                  <option>Ms.</option>
+                  <option>Dr.</option>
+               </select>
+            </div>
+            <!-- Name -->
+            <div class="form-group right">
+               <label for="Firstname" class="label-title">Name </label>
+               <input type="text" id="Name" class="form-input" placeholder="enter your name"
+                  oninput="this.value = this.value.replace(/[^a-z, ][^A-Z, ]/g, '').replace(/[^a-zA-Z, ]/g, '');"
+                  [(ngModel)]="RegisterObj.ApplicantName" />
+            </div>
+
+            <!-- DOB & father's name -->
+
+            <div class="form-group left">
+               <label for="Firstname" class="label-title">Father's Name </label>
+               <input type="text" id="FatherName" class="form-input" placeholder="enter father's name"
+                  oninput="this.value = this.value.replace(/[^a-z, ][^A-Z, ]/g, '').replace(/[^a-zA-Z, ]/g, '');"
+                  [(ngModel)]="RegisterObj.ApplicantFatherName" />
+            </div>
+
+            <div class="form-group right">
+               <label for="DOB" class="label-title">Date of Birth </label>
+               <input type="date" id="date" class="form-input" id="datemax"
+                  name="datemax" max="2004-03-31" placeholder="dd-mm-yyyy" value=""
+                  [(ngModel)]="RegisterObj.ApplicantDOB">
+            </div>
+         </div>
+         <!-- Gender and Marrital status -->
+         <div class="horizontal-group">
+
+            <div class="form-group left">
+               <label class="label-title">Gender </label>
+               <div class="input-group">
+                  <label for="male">
+                     <input type="radio" name="gender" value="male" id="male"> Male</label>
+                  <label for="female">
+                     <input type="radio" name="gender" value="female" id="female"> Female</label>
+               </div>
+            </div>
+
+            <div class="form-group right">
+               <label class="label-title">Marital Status </label>
+               <div>
+                  <label>
+                     <input type="radio" value="UnMarried"
+                        [(ngModel)]="RegisterObj.ApplicantMaritalStatus">UnMarried</label>
+                  <label>
+                     <input type="radio" value="Married"
+                        [(ngModel)]="RegisterObj.ApplicantMaritalStatus">Married</label>
+
+               </div>
+            </div>
+
+         </div>
+         <!-- Mobile Number & Email-id -->
+         <div class="horizontal-group">
+
+            <div class="form-group left">
+               <label class="label-title">Mobile Number </label>
+               <input type="text" class="form-input" placeholder="" (input)="MinMobile()"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" size="25"
+                  maxlength="10" [(ngModel)]="RegisterObj.ApplicantMobileNumber">
+            </div>
+
+            <div class="form-group right">
+               <label for="experience" class="label-title">Email-id </label>
+               <input type="text" class="form-input" (input)="validateEmail()" [(ngModel)]="RegisterObj.ApplicantEmail">
+            </div>
+            <!-- Address -->
+            <div class="form-group">
+               <label for="choose-file" class="label-title">Address </label>
+               <textarea class="form-input" rows="4" cols="50" style="height:auto"
+                  [(ngModel)]="RegisterObj.ApplicantAddress"></textarea>
+            </div>
+
+         </div>
+
+
+         <!-- Aadhar Card & Pan Card -->
+         <div class="horizontal-group">
+            <div class="form-group left">
+               <label class="label-title">Aadhar Card </label>
+               <input type="text" class="form-input" (input)="MinAadhar()"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" maxlength="12"
+                  [(ngModel)]="RegisterObj.ApplicantAadhar">
+            </div>
+
+            <div class="form-group right">
+               <label class="label-title">Pan Card </label>
+               <input type="text" class="form-input" (input)="validateEmail()" [(ngModel)]="RegisterObj.ApplicantPan">
+            </div>
+
+         </div>
+
+         <!-- occupation & Annual Income -->
+         <div class="horizontal-group">
+            <div class="form-group left">
+               <label class="label-title">Occupation </label>
+               <select name="Occupation" class="form-input" [(ngModel)]="RegisterObj.ApplicantOccupation">
+                  <option>Select</option>
+                  <option>Central Govt</option>
+                  <option>State Govt</option>
+                  <option>PSU</option>
+                  <option>PVT Organisation</option>
+                  <option>Self Employed</option>
+                  <option>Business</option>
+                  <option>Student</option>
+                  <option>Others</option>
+               </select>
+            </div>
+
+            <div class="form-group right">
+               <label class="label-title">Annual Income </label>
+               <input type="text" class="form-input"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" [(ngModel)]="RegisterObj.ApplicantAnnualIncome">
+            </div>
+
+         </div>
+
+      </div>
+      <!-- form footer -->
+      <div class="form-footer">
+         <span>All fields are required</span>
+         <button type="submit" class="btn" (click)="applyForBankAccount()">Submit</button>
+      </div>
+   </div>
+
+</body>
