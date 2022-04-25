@@ -1,0 +1,20 @@
+Driver Name: org.hsqldb.jdbc.JDBCDriver
+URL: jdbc:hsqldb:hsql://localhost/xdb
+username: SA
+Password:
+
+CREATE TABLE FRIENDS
+(
+  FRIEND_ID INT,
+  FRIEND_NAME VARCHAR(20),
+  FRIEND_TYPE VARCHAR(20)
+);
+
+
+INSERT INTO FRIENDS VALUES(101,'jack','mutual');
+INSERT INTO FRIENDS VALUES(102,'jill','family');
+INSERT INTO FRIENDS VALUES(103,'jermy','office');
+INSERT INTO FRIENDS VALUES(104,'jeff','school');
+INSERT INTO FRIENDS VALUES(105,'jerry','college');
+
+DELETE FROM FRIENDS WHERE FRIEND_ID=108;
